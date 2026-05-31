@@ -1,0 +1,50 @@
+{
+  "name": "dc-fence-planner",
+  "version": "1.0.0",
+  "description": "Standalone Electron + React desktop app for creating custom fence layout plans for DC Fencing LLC.",
+  "author": "DC Fencing LLC",
+  "private": true,
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "node scripts/dev.cjs",
+    "build": "vite build",
+    "electron:preview": "npm run build && electron .",
+    "dist": "npm run build && electron-builder --win --x64",
+    "dist:dir": "npm run build && electron-builder --dir",
+    "electron:dev": "electron .",
+    "vite:dev": "vite --host 127.0.0.1"
+  },
+  "dependencies": {
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "jspdf": "latest",
+    "html2canvas": "latest"
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  },
+  "build": {
+    "appId": "com.dcfencing.fenceplanner",
+    "productName": "DC Fence Planner",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
